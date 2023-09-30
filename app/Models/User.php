@@ -26,15 +26,32 @@ class User extends Authenticatable
     }
 
 
-    public function favorites()
+    public function favorites()  // products()
     {
         return $this->belongsToMany(Product::class);
     }
+
 
     public function hasFavorites($favorite_id)
     {
         return $this->favorites()->where("product_id", $favorite_id)->exists();
     }
+
+
+    public function userAddresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
+
+
+
 
 
     protected $hidden = [
