@@ -22,11 +22,10 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "user_id" => "required",
             "payment_type_id" => 'required|numeric',
             "delivery_method_id" => 'required|numeric',
-            "address" => "required",
-            "comments" => 'required|max:500',
+            "address_id" => "required",
+            "comments" => ' nullable|max:500',
             "sum" => "required",
             "products" => 'required|array',
             'products.*.product_id' => 'required|numeric',
